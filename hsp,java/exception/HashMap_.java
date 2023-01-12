@@ -11,21 +11,31 @@ public class HashMap_ {
 	public static void main(String[] args) {
 		Map hashmap = new HashMap();
 		hashmap.put(1, new Emp("alice", 2, 19000));
-		hashmap.put(1, new Emp("tom", 8, 14500));
-		hashmap.put(1, new Emp("jack", 2, 18000));
-		hashmap.put(1, new Emp("jewl", 2, 15000));
-		hashmap.put(1, new Emp("Bob", 2, 20000));
+		hashmap.put(2, new Emp("tom", 8, 14500));
+		hashmap.put(3, new Emp("jack", 2, 18000));
+		hashmap.put(4, new Emp("jewl", 2, 15000));
+		hashmap.put(5, new Emp("Bob", 2, 20000));
+		System.out.println("迭代器输出+EntrySet");
 		Set entrySet = hashmap.entrySet();
 		Iterator iterator = entrySet.iterator();
 		while (iterator.hasNext()) {
 			Map.Entry entry = (Map.Entry) iterator.next();
 			Emp emp = (Emp) entry.getValue();
-			if (emp> 18000) {
-
+			if (emp.getSal() > 18000) {
+				System.out.println(emp);
 			}
 
 		}
+		System.out.println("增强for循环+keySet");
+		Set keySet = hashmap.keySet();
+		for (Object obj : keySet) {
+			Emp emp = (Emp) hashmap.get(obj);
+			if (emp.getSal() > 18000) {
+				System.out.println(emp);
+			}
+		}
 	}
+}
 
 class Emp {
 	private String name;
@@ -39,30 +49,30 @@ class Emp {
 	}
 
 	public String toString() {
-		return name + ID + sal;
+		return name + "\t" + ID + "\t" + sal;
 	}
 
-	public String setName() {
-		return name;
-	}
-
-	public void getName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public void setID(){
-		this.ID=ID;
+	public String getName() {
+		return name;
 	}
 
-	public int getID( int ID){
+	public void setID(int ID) {
+		this.ID = ID;
+	}
+
+	public int getID() {
 		return ID;
 	}
 
-	public double setSal(double sal) {
-		return sal;
+	public void setSal(double sal) {
+		this.sal = sal;
 	}
 
-	public void getSal(double sal) {
-		this.sal = sal;
+	public double getSal() {
+		return sal;
 	}
 }
